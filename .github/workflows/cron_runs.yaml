@@ -1,8 +1,8 @@
 name: Run daily arxiv
 
 on:
-  schedule:
-    - cron: '0 20 23 5 *'  # UTC时间：5月23日20:00 == 北京时间5月24日04:00
+  #schedule:
+  #  - cron: '0 20 23 5 *'  # UTC时间：5月23日20:00 == 北京时间5月24日04:00
   workflow_dispatch:
 
 
