@@ -44,16 +44,18 @@ if __name__ == "__main__":
 
     config = configparser.ConfigParser()
     config.read("configs/config.ini")
-    OAI_KEY = "sk-823fc37d344844128a4bbd02e690d198"
+    OAI_KEY = os.environ.get("OAI_KEY")
 
-    '''if "deepseek" in config["SELECTION"]["model"]:
+    if "deepseek" in config["SELECTION"]["model"]:
         openai_client = OpenAI(api_key=OAI_KEY, base_url="https://api.deepseek.com")
+    elif "glm" in config["SELECTION"]["model"]:
+        openai_client = OpenAI(
+            api_key=OAI_KEY,
+            base_url="https://open.bigmodel.cn/api/paas/v4/"
+        )
     else:
-        raise ValueError()'''
-    openai_client = OpenAI(
-        api_key="1e2aba84196b4e3694a51fc3d30d7a0f.m1XJ5Bcncw8aWOuc",
-        base_url="https://open.bigmodel.cn/api/paas/v4/"
-    )
+        raise ValueError()
+
     with open('paper_list/ICLR_2025_1.json', 'r', encoding='utf-8') as f:
         papers = json.load(f)
 
